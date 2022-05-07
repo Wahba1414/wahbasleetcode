@@ -10,18 +10,34 @@
  * @return {ListNode}
  */
 
-//Recursive v2
-var reverseList = function(head) {
-    if (!head) return null;
-    if (!head.next) return head;
+
+// Iteratively 
+var reverseList = function(current) {
+   let prev = null;
     
-    let temp = reverseList(head.next);
-    head.next.next = head;
-    head.next = null;
-    
-    return temp;
+   while(current){
+       let next = current.next; // just a reference to get the next one later
+       current.next = prev;
+       prev = current;
+       current = next;
+   }
+   
+   return prev; 
     
 };
+
+//Recursive v2
+// var reverseList = function(head) {
+//     if (!head) return null;
+//     if (!head.next) return head;
+    
+//     let temp = reverseList(head.next);
+//     head.next.next = head;
+//     head.next = null;
+    
+//     return temp;
+    
+// };
 
 //     Recursively V1
 // var reverseList = function(head) {    
