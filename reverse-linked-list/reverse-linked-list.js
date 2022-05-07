@@ -9,25 +9,37 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+//Recursive v2
 var reverseList = function(head) {
-//    Iteratively
+    if (!head) return null;
+    if (!head.next) return head;
     
-//     Recursively 
-    let newHead = head;
-    function traverse(node){
-        if(node && node.next){
-            let next = traverse(node.next);
-            if(head == node) node.next = null;
-            next.next = node;
-        }else{
-            newHead = node;
-        }
-        
-        return node;
-    }
+    let temp = reverseList(head.next);
+    head.next.next = head;
+    head.next = null;
     
-    
-    traverse(head);
-    return newHead;
+    return temp;
     
 };
+
+//     Recursively V1
+// var reverseList = function(head) {    
+//     let newHead = head;
+//     function traverse(node){
+//         if(node && node.next){
+//             let next = traverse(node.next);
+//             if(head == node) node.next = null;
+//             next.next = node;
+//         }else{
+//             newHead = node;
+//         }
+        
+//         return node;
+//     }
+    
+    
+//     traverse(head);
+//     return newHead;
+    
+// };
