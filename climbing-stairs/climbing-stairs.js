@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-//O(n) - tabulization
+//O(n) - tabulation
 var climbStairs = function(n) {
     if(n <= 2) return n;
     
