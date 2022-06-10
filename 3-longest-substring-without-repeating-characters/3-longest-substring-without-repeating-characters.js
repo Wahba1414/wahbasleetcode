@@ -2,7 +2,8 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+// O(n^2)
+var lengthOfLongestSubstring_old = function(s) {
     let i = 0; 
     let longest = 0;
     
@@ -44,3 +45,31 @@ var lengthOfLongestSubstring = function(s) {
     return longest;
     
 };
+
+//Linear
+var lengthOfLongestSubstring = function (s) {
+  let start = 0;
+  let end = start + 1;
+  let max = (s.length) ? 1 : 0;
+  let currentLen;
+
+  let tracker = {
+    [s[start]]: start,
+  };
+
+  while (end < s.length) {
+
+    if (tracker[s[end]] == undefined || tracker[s[end]] < start) {
+      tracker[s[end]] = end;
+      currentLen = end - start + 1;
+      max = (currentLen > max) ? currentLen : max;
+    } else {
+      start = tracker[s[end]] + 1;
+      tracker[s[end]] = end;
+    }
+
+    end++;
+  }
+
+  return max;
+}
